@@ -1,2 +1,8 @@
 # bootstrap-affix
 对于bootstrap框架affix的探讨
+
+正常状态下，bootstrap的affix可以借助data调用，但是如果加入了affix-offset-bottom标签，再滑到底部之后就失去了fixed的效果
+原因是当滑动到底部，会给导航部分加入一个内联的style=position:relative
+之后返回顶部，class赋予的position:fixed会被这个内联的样式覆盖
+直接加入一条affix-bottom:absolute!important;这个内联的样式就不会在滑动到底部时被加入
+也就解决了这个问题
